@@ -4,31 +4,31 @@ float leftPaddleX, leftPaddleY, rightPaddleX, rightPaddleY;
 int paddleWidth = 10;
 int paddleHeight = 100;
 int ballSize = 20;
-//bolden 
+//bolden
 void setup() {
   size(800, 400);
   ballX = width / 2;
   ballY = height / 2;
-  ballSpeedX = 5; // fart
-  ballSpeedY = 5; //fart
-  leftPaddleX = 10; // padler størrelse
-  rightPaddleX = width - paddleWidth - 10;
+  ballSpeedX = 6; // fart
+  ballSpeedY = 6; //fart
+  leftPaddleX = 11; // padler størrelse
+  rightPaddleX = width - paddleWidth - 11;
   leftPaddleY = rightPaddleY = (height - paddleHeight) / 2;
 }
 
 void draw() {
   background(0);
 
-  // Opdater boldens position
+  // Opdatere bold position
   ballX += ballSpeedX;
   ballY += ballSpeedY;
 
-  // Tjek for kollision med top- og bundvæggen
+  // kollision
   if (ballY < 0 || ballY > height) {
     ballSpeedY *= -1;
   }
 
-  // Tjek for kollision med venstre og højre padler
+  //  kollision med paddler
   if ((ballX < leftPaddleX + paddleWidth && ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) ||
       (ballX > rightPaddleX && ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight)) {
     ballSpeedX *= -1;
@@ -36,8 +36,7 @@ void draw() {
 
   // Tegn bolden
   ellipse(ballX, ballY, ballSize, ballSize);
-
-  // Tegn venstre og højre padler
+// paddler
   rect(leftPaddleX, leftPaddleY, paddleWidth, paddleHeight);
   rect(rightPaddleX, rightPaddleY, paddleWidth, paddleHeight);
 
